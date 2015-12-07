@@ -8,7 +8,7 @@ Usage
 ```c#
 var client = Client.Create("http://your_jenkins_addr", "username", "password");
 
-foreach(var job in client.GetJobs())
+foreach(var job in await client.GetJobs())
 {
     Console.WriteLine(job.name);
     Console.WriteLine(job.lastBuild.result);
@@ -24,11 +24,11 @@ var item = await job.BuildAsync(new Dictionary<string, string>() {
 });
 Console.WriteLine("Build Queued");
 
-/* ¿äÃ»ÇÑ ºôµå°¡ jenkins ºôµå Å¥¿¡¼­ ½ÇÁ¦ ºôµå·Î ¿Å°ÜÁú ¶§ ±îÁö ´ë±âÇÑ´Ù. */
+/* ìš”ì²­í•œ ë¹Œë“œê°€ jenkins ë¹Œë“œ íì—ì„œ ì‹¤ì œ ë¹Œë“œë¡œ ì˜®ê²¨ì§ˆ ë•Œ ê¹Œì§€ ëŒ€ê¸°í•œë‹¤. */
 await item.WaitForBuildStart();
 Console.WriteLine("Build Started");
 
-/* ¿äÃ»ÇÑ ºôµå°¡ ¿Ï·á, È¤Àº ÁßÁöµÉ¶§±îÁö ´ë±âÇÑ´Ù. */
+/* ìš”ì²­í•œ ë¹Œë“œê°€ ì™„ë£Œ, í˜¹ì€ ì¤‘ì§€ë ë•Œê¹Œì§€ ëŒ€ê¸°í•œë‹¤. */
 await item.WaitForBuildEnd();
 Console.WriteLine("Build Finished");
 ```
