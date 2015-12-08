@@ -19,8 +19,6 @@ namespace JenkinsClient
         {
             var response = await client.api.GetQueuedItem(id);
 
-            Console.WriteLine(response.body);
-
             return new QueuedItem(response.body);
         }
     }

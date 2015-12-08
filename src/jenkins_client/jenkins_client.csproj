@@ -58,7 +58,6 @@
     <Compile Include="EnteredBuildParameter.cs" />
     <Compile Include="Job.cs" />
     <Compile Include="LazyObject.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueuedBuild.cs" />
     <Compile Include="QueuedItem.cs" />

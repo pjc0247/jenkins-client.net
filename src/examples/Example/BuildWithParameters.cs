@@ -28,6 +28,8 @@ namespace JenkinsClientExample.Example
 
             await buildTask.WaitForBuildEnd();
             Console.WriteLine("Build Finished");
+
+            Console.WriteLine($"Result : {buildTask.result}");
         }
     }
 }

@@ -28,8 +28,6 @@ namespace JenkinsClient
         {
             this.host = host;
 
-            Console.WriteLine(Convert.ToBase64String(Encoding.ASCII.GetBytes(id + ":" + password)));
-
             this.http = new HttpClient();
             this.http.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue(
