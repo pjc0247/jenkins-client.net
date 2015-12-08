@@ -2,6 +2,8 @@ jenkins-client.net
 ====
 
 __Jenkins REST API client for .Net__
+<br>
+[examples](https://github.com/pjc0247/jenkins-client.net/tree/master/src/examples/Example)
 
 Usage
 ----
