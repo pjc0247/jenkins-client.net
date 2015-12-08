@@ -2,8 +2,21 @@
 using System.Threading;
 using System.Threading.Tasks;
 
+using Newtonsoft.Json.Linq;
+
 namespace JenkinsClient
 {
+    public class LazyJObject : LazyObject<JObject>
+    {
+        public async Task EnsureDataInLocalAsync()
+        {
+            await FetchAsync();
+        }
+        public void EnsureDataInLocal()
+        {
+            FetchAsync().Wait();
+        }
+    }
     public class LazyObject<T>
     {
         private class DataStatus
@@ -24,14 +37,14 @@ namespace JenkinsClient
             this.dataCompletionEvent = new ManualResetEventSlim(false);
         }
 
-        public virtual Task<T> Fetch()
+        protected virtual Task<T> Fetch()
         {
             /* place a fetch implementation here */
 
             throw new NotImplementedException("You must override this method.");
         }
 
-        public async Task FetchAsync()
+        protected async Task FetchAsync()
         {
             Interlocked.MemoryBarrier();
             if (dataStatus == DataStatus.InLocal)
@@ -55,11 +68,18 @@ namespace JenkinsClient
 
             dataCompletionEvent.Set();
         }
-
-        public void EnsureDataInLocal()
+        
+        /* moved to LazyJObject
+        public virtual async Task EnsureDataInLocalAsync()
+        {
+            await FetchAsync();
+        }
+        public virtual void EnsureDataInLocal()
         {
             FetchAsync().Wait();
         }
+        */
+
         public void Invalidate()
         {
             if (Interlocked.CompareExchange(ref dataStatus, DataStatus.Preparing, DataStatus.InLocal)

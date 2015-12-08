@@ -43,7 +43,6 @@ namespace JenkinsClient
 
         private async Task<RestResponse> Request(Uri uri)
         {
-            Console.WriteLine(uri);
             var response = await http.GetAsync(uri);
 
             return new RestResponse(response);

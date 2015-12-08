@@ -10,7 +10,7 @@ using Newtonsoft.Json.Linq;
 
 namespace JenkinsClient
 {
-    public class Build : LazyObject<JObject>
+    public class Build : LazyJObject
     {
         public static readonly int PollingInterval = 1000;
 
@@ -62,7 +62,7 @@ namespace JenkinsClient
             {
                 EnsureDataInLocal();
 
-                return (string)data[nameof(estimatedDuration)];
+                return (string)data[nameof(result)];
             }
         }
         public string displayName
@@ -123,7 +123,7 @@ namespace JenkinsClient
             this.client = job.client;
         }
 
-        public override async Task<JObject> Fetch()
+        protected override async Task<JObject> Fetch()
         {
             var response = await client.api.GetBuildData(job.name, number);
 

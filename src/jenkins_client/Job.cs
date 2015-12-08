@@ -11,7 +11,7 @@ using Newtonsoft.Json.Linq;
 
 namespace JenkinsClient
 {
-    public class Job : LazyObject<JObject>
+    public class Job : LazyJObject
     {
         internal Client client { get; private set; }
 
@@ -164,7 +164,7 @@ namespace JenkinsClient
             this.name = name;
         }
 
-        public override async Task<JObject> Fetch()
+        protected override async Task<JObject> Fetch()
         {
             var response = await client.api.GetJobData(name);
 
