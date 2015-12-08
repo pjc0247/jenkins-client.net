@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace jenkins_client
+namespace JenkinsClient
 {
     public class LazyObject<T>
     {
