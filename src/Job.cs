@@ -61,6 +61,45 @@ namespace jenkins_client
                 return (string)data[nameof(url)];
             }
         }
+        public string color
+        {
+            get
+            {
+                EnsureDataInLocal();
+
+                return (string)data[nameof(color)];
+            }
+        }
+        public List<BuildParameter> parameters
+        {
+            get
+            {
+                EnsureDataInLocal();
+                
+                var actions = (JArray)data["actions"];
+                var result = new List<BuildParameter>();
+                JToken trash = null;
+
+                foreach(var _action in actions)
+                {
+                    var action = (JObject)_action;
+
+                    if (action.TryGetValue("parameterDefinitions", out trash))
+                    {
+                        var pary = (JArray)action["parameterDefinitions"];
+
+                        foreach (var param in pary)
+                        {
+                            result.Add(new BuildParameter((JObject)param));
+                        }
+
+                        return result;
+                    }
+                }
+
+                return result;
+            }
+        }
 
         #region LAST_BUILDS
         public Build lastBuild

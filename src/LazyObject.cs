@@ -62,7 +62,11 @@ namespace jenkins_client
         }
         public void Invalidate()
         {
-            Interlocked.CompareExchange(ref dataStatus, DataStatus.Preparing, DataStatus.InLocal);
+            if (Interlocked.CompareExchange(ref dataStatus, DataStatus.Preparing, DataStatus.InLocal)
+                == DataStatus.InLocal)
+            {
+                dataCompletionEvent.Reset();
+            }
         }
     }
 }

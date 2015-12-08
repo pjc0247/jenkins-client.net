@@ -65,6 +65,54 @@ namespace jenkins_client
                 return (string)data[nameof(estimatedDuration)];
             }
         }
+        public string displayName
+        {
+            get
+            {
+                EnsureDataInLocal();
+
+                return (string)data[nameof(displayName)];
+            }
+        }
+        public string fullDisplayName
+        {
+            get
+            {
+                EnsureDataInLocal();
+
+                return (string)data[nameof(fullDisplayName)];
+            }
+        }
+        public List<EnteredBuildParameter> parameters
+        {
+            get
+            {
+                EnsureDataInLocal();
+
+                var actions = (JArray)data["actions"];
+                var result = new List<EnteredBuildParameter>();
+                JToken trash = null;
+
+                foreach (var _action in actions)
+                {
+                    var action = (JObject)_action;
+
+                    if (action.TryGetValue("parameters", out trash))
+                    {
+                        var pary = (JArray)action["parameters"];
+
+                        foreach (var param in pary)
+                        {
+                            result.Add(new EnteredBuildParameter((JObject)param));
+                        }
+
+                        return result;
+                    }
+                }
+
+                return result;
+            }
+        }
 
         internal Build(Job job, int number, string url)
         {
