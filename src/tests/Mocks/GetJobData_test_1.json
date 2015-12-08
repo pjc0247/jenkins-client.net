@@ -1,0 +1,123 @@
+﻿{
+  "actions" : [
+    {
+      "parameterDefinitions" : [
+        {
+          "defaultParameterValue" : {
+            "value" : true
+          },
+          "description" : "bool_description",
+          "name" : "param_1",
+          "type" : "BooleanParameterDefinition"
+        },
+        {
+          "defaultParameterValue" : {
+            "value" : "1.0.0"
+          },
+          "description" : "script_description",
+          "name" : "param_2",
+          "type" : "StringParameterDefinition"
+        },
+        {
+          "defaultParameterValue" : null,
+          "description" : "null_description",
+          "name" : "param_3",
+          "type" : "ListSubversionTagsParameterDefinition"
+        }
+      ]
+    }
+  ],
+  "description" : "test description",
+  "displayName" : "test_1_display_name",
+  "displayNameOrNull" : null,
+  "name" : "test_1",
+  "url" : "http://your_jenkins/",
+  "buildable" : true,
+  "builds" : [
+    {
+      "number" : 185,
+      "url" : "http://your_jenkins/185/"
+    }
+  ],
+  "color" : "red",
+  "firstBuild" : {
+    "number" : 1,
+    "url" : "http://your_jenkins/1/"
+  },
+  "healthReport" : [
+    {
+      "description" : "Build stability: 3 out of the last 5 builds failed.",
+      "iconClassName" : "icon-health-20to39",
+      "iconUrl" : "health-20to39.png",
+      "score" : 40
+    }
+  ],
+  "inQueue" : false,
+  "keepDependencies" : false,
+  "lastBuild" : {
+    "number" : 185,
+    "url" : "http://your_jenkins/185/"
+  },
+  "lastCompletedBuild" : {
+    "number" : 185,
+    "url" : "http://your_jenkins/185/"
+  },
+  "lastFailedBuild" : {
+    "number" : 185,
+    "url" : "http://your_jenkins/185/"
+  },
+  "lastStableBuild" : {
+    "number" : 183,
+    "url" : "http://your_jenkins/183/"
+  },
+  "lastSuccessfulBuild" : {
+    "number" : 183,
+    "url" : "http://your_jenkins/183/"
+  },
+  "lastUnstableBuild" : null,
+  "lastUnsuccessfulBuild" : {
+    "number" : 185,
+    "url" : "http://your_jenkins/185/"
+  },
+  "nextBuildNumber" : 186,
+  "property" : [
+    {
+      "parameterDefinitions" : [
+        {
+          "defaultParameterValue" : {
+            "name" : "param_1",
+            "value" : true
+          },
+          "description" : "bool_description",
+          "name" : "param_1",
+          "type" : "BooleanParameterDefinition"
+        },
+        {
+          "defaultParameterValue" : {
+            "name" : "param_2",
+            "value" : "1.0.0"
+          },
+          "description" : "string_description",
+          "name" : "param_2",
+          "type" : "StringParameterDefinition"
+        },
+        {
+          "defaultParameterValue" : null,
+          "description" : "null_description",
+          "name" : "param_3",
+          "type" : "ListSubversionTagsParameterDefinition"
+        }
+      ]
+    }
+  ],
+  "queueItem" : null,
+  "concurrentBuild" : false,
+  "downstreamProjects" : [
+  ],
+  "scm" : {
+    
+  },
+  "upstreamProjects" : [
+    
+  ]
+}

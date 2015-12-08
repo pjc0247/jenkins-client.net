@@ -1,0 +1,49 @@
+﻿{
+  "assignedLabels" : [
+    {
+      
+    }
+  ],
+  "mode" : "NORMAL",
+  "nodeDescription" : "the master Jenkins node",
+  "nodeName" : "",
+  "numExecutors" : 2,
+  "description" : null,
+  "jobs" : [
+    {
+      "name": "test_1",
+      "url": "http://some_url/",
+      "color": "red"
+    },
+    {
+      "name": "test_2",
+      "url": "http://some_url/",
+      "color": "green"
+    },
+    {
+      "name" : "test_3",
+      "url" : "http://some_url/",
+      "color" : "red"
+    }
+  ],
+  "overallLoad" : {
+    
+  },
+  "primaryView" : {
+    "name" : "All",
+    "url" : "http://some_url/"
+  },
+  "quietingDown" : false,
+  "slaveAgentPort" : 0,
+  "unlabeledLoad" : {
+    
+  },
+  "useCrumbs" : false,
+  "useSecurity" : true,
+  "views" : [
+    {
+      "name" : "All",
+      "url" : "http://192.168.0.221:8080/"
+    }
+  ]
+}
