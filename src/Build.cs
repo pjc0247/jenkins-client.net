@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Newtonsoft.Json;
@@ -81,17 +82,34 @@ namespace jenkins_client
             return JObject.Parse(response.body);
         }
 
-        public async Task WaitForBuildEnd()
+        private async Task<bool> WaitForBuildEnd(Timeout timeout)
         {
-            while (true)
+            if (PollingInterval > timeout.remaining)
+                Console.WriteLine("");
+
+            while (!timeout.isExpired)
             {
                 Invalidate();
 
                 if (!building)
-                    return;
+                    return true;
 
                 await Task.Delay(PollingInterval);
             }
+
+            return false;
+        }
+        public async Task<bool> WaitForBuildEnd(int timeout)
+        {
+            return await WaitForBuildEnd(new Timeout(timeout));
+        }
+        public async Task WaitForBuildEnd()
+        {
+            await WaitForBuildEnd(new Timeout(Timeout.Infinite));
+        }
+        public async Task<bool> WaitForBuildEnd(CancellationToken ct)
+        {
+            return await WaitForBuildEnd(new Timeout(ct));
         }
     }
 }

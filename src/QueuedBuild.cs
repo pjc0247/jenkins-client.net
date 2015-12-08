@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace jenkins_client
@@ -16,9 +17,12 @@ namespace jenkins_client
             this.itemId = itemId;
         }
 
-        public async Task WaitForBuildStart()
+        private async Task<bool> WaitForBuildStart(Timeout timeout)
         {
-            while (true)
+            if (PollingInterval > timeout.remaining)
+                Console.WriteLine("");
+
+            while (!timeout.isExpired)
             {
                 var item = await client.GetBuildQueue().GetItem(itemId);
 
@@ -26,11 +30,25 @@ namespace jenkins_client
                 {
                     number = item.buildNumber.Value;
 
-                    return;
+                    return true;
                 }
 
                 await Task.Delay(PollingInterval);
             }
+
+            return false;
+        }
+        public async Task<bool> WaitForBuildStart(int timeout)
+        {
+            return await WaitForBuildStart(new Timeout(timeout));
+        }
+        public async Task WaitForBuildStart()
+        {
+            await WaitForBuildStart(new Timeout(Timeout.Infinite));
+        }
+        public async Task<bool> WaitForBuildStart(CancellationToken ct)
+        {
+            return await WaitForBuildStart(new Timeout(ct));
         }
     }
 }
