@@ -33,6 +33,10 @@ await item.WaitForBuildEnd();
 Console.WriteLine("Build Finished");
 ```
 
+Releases
+----
+__[Github Release Page](https://github.com/pjc0247/jenkins-client.net/releases)__
+
 Minimum Requirements
 ----
 * C# 6.0
