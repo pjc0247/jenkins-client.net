@@ -1,7 +1,7 @@
 jenkins-client.net
 ====
 
-__Jenkins REST API client for .Net__
+__Jenkins REST API client for .Net__ [![Build Status](http://52.34.187.152:8080/job/JenkinsClient/badge/icon)](http://52.34.187.152:8080/job/JenkinsClient/)
 <br>
 [examples](https://github.com/pjc0247/jenkins-client.net/tree/master/src/examples/Example)
 
