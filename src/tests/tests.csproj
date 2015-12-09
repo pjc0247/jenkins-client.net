@@ -37,6 +37,9 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'JenkinsCI|AnyCPU'">
+    <OutputPath>bin\JenkinsCI\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="HttpMock, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\HttpMock.1.2.0\lib\net40\HttpMock.dll</HintPath>
