@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 using HttpMock;
 using JenkinsClient;
 
 namespace tests
 {
-    [TestClass]
+    [TestFixture]
     public class GetJobsAsyncTest
     {
         private Client client { get; set; }
 
-        [TestInitialize]
+        [SetUp]
         public void Setup()
         {
             var http = HttpMockRepository.At(Config.Host);
@@ -27,7 +27,7 @@ namespace tests
         }
 
 
-        [TestMethod]
+        [Test]
         public async Task GetJobsAsync()
         {
             var jobs = await client.GetJobsAsync();
