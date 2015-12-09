@@ -26,7 +26,7 @@ namespace tests
                 .OK();
 
             client = Client.Create(
-                Config.Host, Config.User, Config.Password)
+                Config.Host, Config.User, Config.Password);
         }
 
 
