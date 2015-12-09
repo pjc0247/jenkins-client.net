@@ -37,7 +37,11 @@ Console.WriteLine("Build Finished");
 
 Releases
 ----
-__[Github Release Page](https://github.com/pjc0247/jenkins-client.net/releases)__
+__[Github Release Page](https://github.com/pjc0247/jenkins-client.net/releases)__<br><br>
+or... You can install 'JenkinsClient' via NuGet now.
+```
+PM> Install-Package JenkinsClient
+```
 
 Minimum Requirements
 ----
