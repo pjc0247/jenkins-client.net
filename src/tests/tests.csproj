@@ -125,6 +125,7 @@
   </Target>
   <PropertyGroup>
     <PreBuildEvent>echo $(TargetDir)
+mkdir "$(TargetDir)Mocks"
 copy "$(ProjectDir)Mocks" "$(TargetDir)Mocks"</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
