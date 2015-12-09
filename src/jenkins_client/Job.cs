@@ -173,10 +173,17 @@ namespace JenkinsClient
 
         public async Task<QueuedBuild> BuildAsync(Dictionary<string, string> param = null)
         {
-            var response = await client.api.PostBuildWithParameters(
-                name, 
-                param ?? new Dictionary<string, string>());
+            RestResponse response = null;
 
+            if (param == null)
+                response = await client.api.PostBuild(name);
+            else
+            {
+                response = await client.api.PostBuildWithParameters(
+                    name,
+                    param ?? new Dictionary<string, string>());
+            }
+            
             if (response.code == System.Net.HttpStatusCode.Created)
             {
                 var md = Regex.Match(
@@ -187,7 +194,11 @@ namespace JenkinsClient
                 return new QueuedBuild(itemId, this);
             }
             else
-                return null;
+            {
+                throw new OperationFailedException(
+                    $"BuildAsync Failed, StatusCode : {response.code}",
+                    response.body);
+            }
         }
 
         private Build GetBuild(string tag)

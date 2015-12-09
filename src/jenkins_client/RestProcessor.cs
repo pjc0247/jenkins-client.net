@@ -18,6 +18,7 @@ namespace JenkinsClient
             public static readonly string GetBuildData = "/job/{0}/{1}/api/json";
             public static readonly string GetQueuedItem = "/queue/item/{0}/api/json";
 
+            public static readonly string PostBuild = "/job/{0}/build?jenkins_status=1&jenkins_sleep=3";
             public static readonly string PostBuildWithParameters = "/job/{0}/buildWithParameters?jenkins_status=1&jenkins_sleep=3";
         }
 
@@ -74,6 +75,10 @@ namespace JenkinsClient
         public async Task<RestResponse> GetBuildData(string jobName, int buildNo)
         {
             return await Request(FormatUri(Path.GetBuildData, jobName, buildNo));
+        }
+        public async Task<RestResponse> PostBuild(string jobName)
+        {
+            return await Request(FormatUri(Path.PostBuild, jobName));
         }
         public async Task<RestResponse> PostBuildWithParameters(string jobName, Dictionary<string,string> data)
         {
