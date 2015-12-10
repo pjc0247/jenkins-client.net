@@ -44,29 +44,32 @@ namespace JenkinsClient
             throw new NotImplementedException("You must override this method.");
         }
 
-        protected async Task FetchAsync()
+        protected Task FetchAsync()
         {
-            Interlocked.MemoryBarrier();
-            if (dataStatus == DataStatus.InLocal)
-                return;
-            if (dataStatus == DataStatus.Fetching)
-                dataCompletionEvent.Wait();
-
-            switch (Interlocked.Exchange(ref dataStatus, DataStatus.Fetching))
+            return Task.Run(async () =>
             {
-                case DataStatus.Fetching:
-                    await FetchAsync();
+                Interlocked.MemoryBarrier();
+                if (dataStatus == DataStatus.InLocal)
                     return;
-                case DataStatus.InLocal:
-                    return;
-            }
+                if (dataStatus == DataStatus.Fetching)
+                    dataCompletionEvent.Wait();
 
-            data = await Fetch();
+                switch (Interlocked.Exchange(ref dataStatus, DataStatus.Fetching))
+                {
+                    case DataStatus.Fetching:
+                        await FetchAsync();
+                        return;
+                    case DataStatus.InLocal:
+                        return;
+                }
 
-            if (Interlocked.Exchange(ref dataStatus, DataStatus.InLocal) != DataStatus.Fetching)
-                throw new InvalidOperationException();
+                data = await Fetch();
 
-            dataCompletionEvent.Set();
+                if (Interlocked.Exchange(ref dataStatus, DataStatus.InLocal) != DataStatus.Fetching)
+                    throw new InvalidOperationException();
+
+                dataCompletionEvent.Set();
+            });
         }
         
         /* moved to LazyJObject
