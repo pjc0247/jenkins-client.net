@@ -44,13 +44,13 @@ namespace JenkinsClient
         {
             var response = await http.GetAsync(uri);
 
-            return new RestResponse(response);
+            return await RestResponse.Create(response);
         }
         private async Task<RestResponse> Request(Uri uri, string data)
         {
             var response = await http.PostAsync(uri, new StringContent(data));
 
-            return new RestResponse(response);
+            return await RestResponse.Create(response);
         }
         private async Task<RestResponse> Request(Uri uri, Dictionary<string, string> data)
         {
@@ -61,7 +61,7 @@ namespace JenkinsClient
 
             var response = await http.PostAsync(uri, content);
 
-            return new RestResponse(response);
+            return await RestResponse.Create(response);
         }
 
         public async Task<RestResponse> GetJobs()
