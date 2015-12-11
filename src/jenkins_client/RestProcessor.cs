@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using System.Diagnostics.Contracts;
 
 namespace JenkinsClient
 {
@@ -37,6 +38,8 @@ namespace JenkinsClient
 
         private Uri FormatUri(string src, params object[] bindings)
         {
+            Contract.Requires(string.IsNullOrEmpty(src) == false);
+
             return new Uri(host + string.Format(src, bindings));
         }
 

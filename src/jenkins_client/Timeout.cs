@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Diagnostics.Contracts;
 
 namespace JenkinsClient
 {
@@ -25,6 +26,8 @@ namespace JenkinsClient
         /// </param>
         public Timeout(int timeout)
         {
+            Contract.Requires(timeout > 0);
+
             this.timeout = timeout;
             this.start = Environment.TickCount;
         }
@@ -35,6 +38,8 @@ namespace JenkinsClient
         /// <param name="ct">취소 토큰</param>
         public Timeout(CancellationToken ct)
         {
+            Contract.Requires(ct != null);
+
             this.ct = ct;
         }
 

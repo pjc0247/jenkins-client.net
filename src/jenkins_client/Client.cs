@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Diagnostics.Contracts;
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -24,6 +25,10 @@ namespace JenkinsClient
             string host,
             string id, string password)
         {
+            Contract.Requires(string.IsNullOrEmpty(host) == false);
+            Contract.Requires(string.IsNullOrEmpty(id) == false);
+            Contract.Requires(string.IsNullOrEmpty(password) == false);
+
             var client = new Client(host, id, password);
 
             return client;
@@ -72,6 +77,8 @@ namespace JenkinsClient
         /// <returns></returns>
         public Job GetJob(string name)
         {
+            Contract.Requires(string.IsNullOrEmpty(name) == false);
+
             return new Job(this, name);
         }
 
