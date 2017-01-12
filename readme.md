@@ -10,7 +10,7 @@ Usage
 ```c#
 var client = Client.Create("http://your_jenkins_addr", "username", "password");
 
-foreach(var job in await client.GetJobs())
+foreach(var job in await client.GetJobsAsync())
 {
     Console.WriteLine(job.name);
     Console.WriteLine(job.lastBuild.result);
