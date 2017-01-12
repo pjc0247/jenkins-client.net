@@ -57,12 +57,17 @@ namespace JenkinsClient
         }
         private async Task<RestResponse> Request(Uri uri, Dictionary<string, string> data)
         {
+			/*
             var content = new MultipartFormDataContent();
 
             foreach (var pair in data)
                 content.Add(new StringContent(pair.Value), pair.Key);
-
-            var response = await http.PostAsync(uri, content);
+			*/
+			var uriString = uri.ToString();
+			foreach (var pair in data)
+				uriString += "&" + pair.Key + "=" + Uri.EscapeUriString(pair.Value);
+			
+			var response = await http.PostAsync(new Uri(uriString), new StringContent(""));
 
             return await RestResponse.Create(response);
         }

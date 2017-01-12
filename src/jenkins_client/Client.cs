@@ -60,6 +60,9 @@ namespace JenkinsClient
         public async Task<List<Job>> GetJobsAsync()
         {
             var response = await api.GetJobs();
+			if (response.code != System.Net.HttpStatusCode.OK)
+				throw new InvalidOperationException(response.code.ToString());
+
             var data = JObject.Parse(response.body);
             
             var jobs = from job in data["jobs"]
