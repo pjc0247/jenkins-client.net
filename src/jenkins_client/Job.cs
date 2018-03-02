@@ -102,6 +102,9 @@ namespace JenkinsClient
         }
 
         #region LAST_BUILDS
+        /// <summary>
+        /// This can be null if there's no build history
+        /// </summary>
         public Build lastBuild
         {
             get
@@ -111,6 +114,9 @@ namespace JenkinsClient
                 return GetBuild(nameof(lastBuild));
             }
         }
+        /// <summary>
+        /// This can be null if there's no build history
+        /// </summary>
         public Build lastCompleteBuild
         {
             get
@@ -120,6 +126,9 @@ namespace JenkinsClient
                 return GetBuild(nameof(lastCompleteBuild));
             }
         }
+        /// <summary>
+        /// This can be null if there's no build history
+        /// </summary>
         public Build lastFailedBuild
         {
             get
@@ -129,6 +138,9 @@ namespace JenkinsClient
                 return GetBuild(nameof(lastFailedBuild));
             }
         }
+        /// <summary>
+        /// This can be null if there's no build history
+        /// </summary>
         public Build lastSuccessfulBuild
         {
             get
@@ -138,6 +150,9 @@ namespace JenkinsClient
                 return GetBuild(nameof(lastSuccessfulBuild));
             }
         }
+        /// <summary>
+        /// This can be null if there's no build history
+        /// </summary>
         public Build lastStableBuild
         {
             get
@@ -147,6 +162,9 @@ namespace JenkinsClient
                 return GetBuild(nameof(lastStableBuild));
             }
         }
+        /// <summary>
+        /// This can be null if there's no build history
+        /// </summary>
         public Build lastUnstableBuild
         {
             get
