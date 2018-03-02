@@ -31,11 +31,14 @@ namespace JenkinsClientExample.Example
                     Console.WriteLine($"         Type : {param.type}");
                 }
 
-                await job.lastBuild.EnsureDataInLocalAsync();
-                Console.WriteLine($"   LastBuild");
-                Console.WriteLine($"      No : #{job.lastBuild.number}");
-                Console.WriteLine($"      Result : {job.lastBuild.result}");
-                Console.WriteLine($"      Duration : {job.lastBuild.duration}");
+                if (job.lastBuild != null)
+                {
+                    await job.lastBuild.EnsureDataInLocalAsync();
+                    Console.WriteLine($"   LastBuild");
+                    Console.WriteLine($"      No : #{job.lastBuild.number}");
+                    Console.WriteLine($"      Result : {job.lastBuild.result}");
+                    Console.WriteLine($"      Duration : {job.lastBuild.duration}");
+                }
 
                 Console.WriteLine();
             }
