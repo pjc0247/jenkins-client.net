@@ -22,9 +22,9 @@
   ],
   "artifacts" : [
     {
-      "displayPath" : "test.exe",
-      "fileName" : "test.exe",
-      "relativePath" : "test.exe"
+      "displayPath" : "testDisplayPath.exe",
+      "fileName" : "testFileName.exe",
+      "relativePath" : "testRelativePath.exe"
     },
     {
       "displayPath" : "test2.7z",

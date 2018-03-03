@@ -40,6 +40,9 @@ namespace tests
             build.EnsureDataInLocal();
             Assert.That(build.artifacts, Is.Not.Null);
             Assert.That(build.artifacts.Count, Is.EqualTo(2));
+            Assert.That(build.artifacts[0].displayPath, Is.EqualTo("testDisplayPath.exe"));
+            Assert.That(build.artifacts[0].fileName, Is.EqualTo("testFileName.exe"));
+            Assert.That(build.artifacts[0].relativePath, Is.EqualTo("testRelativePath.exe"));
         }
 
         [Test]

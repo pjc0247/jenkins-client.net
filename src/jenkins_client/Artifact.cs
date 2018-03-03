@@ -13,7 +13,7 @@ namespace JenkinsClient
         {
             get
             {
-                return (string)_data[nameof(fileName)];
+                return (string)_data[nameof(displayPath)];
             }
         }
         public string fileName
