@@ -39,7 +39,7 @@ namespace tests
             Build build = new Build(new Job(_client, "jobName"), 368, "/job/jobName/368/api/json");
             build.EnsureDataInLocal();
             Assert.That(build.artifacts, Is.Not.Null);
-            Assert.That(build.artifacts.Count, Is.EqualTo(3));
+            Assert.That(build.artifacts.Count, Is.EqualTo(2));
         }
 
         [Test]
