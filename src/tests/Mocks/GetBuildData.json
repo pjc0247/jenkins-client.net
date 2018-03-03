@@ -1,0 +1,67 @@
+﻿{
+  "actions" : [
+    {
+      "causes" : [
+        {
+          "shortDescription" : "Started by timer"
+        }
+      ]
+    },
+    {
+      
+    },
+    {
+      
+    },
+    {
+      "failCount" : 0,
+      "skipCount" : 5,
+      "totalCount" : 356,
+      "urlName" : "testReport"
+    }
+  ],
+  "artifacts" : [
+    {
+      "displayPath" : "testDisplayPath.exe",
+      "fileName" : "testFileName.exe",
+      "relativePath" : "testRelativePath.exe"
+    },
+    {
+      "displayPath" : "test2.7z",
+      "fileName" : "test2.7z",
+      "relativePath" : "test2.7z"
+    }
+  ],
+  "building" : false,
+  "description" : null,
+  "duration" : 607173,
+  "estimatedDuration" : 569287,
+  "executor" : null,
+  "fullDisplayName" : "jobName #368",
+  "id" : "2018-03-02_05-20-45",
+  "keepLog" : false,
+  "number" : 368,
+  "result" : "SUCCESS",
+  "timestamp" : 1519939245284,
+  "url" : "http://your_jenkins/job/jobName/368/",
+  "builtOn" : "",
+  "changeSet" : {
+    "items" : [
+      
+    ],
+    "kind" : "svn",
+    "revisions" : [
+      {
+        "module" : "http://svnRepo",
+        "revision" : 2398
+      },
+      {
+        "module" : "https://svnRepo2",
+        "revision" : 267
+      }
+    ]
+  },
+  "culprits" : [
+    
+  ]
+}

@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Artifact.cs" />
     <Compile Include="Build.cs" />
     <Compile Include="BuildParameter.cs" />
     <Compile Include="BuildQueue.cs" />

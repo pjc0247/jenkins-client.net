@@ -110,12 +110,18 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Config.cs" />
+    <Compile Include="GetBuildDetails.cs" />
     <Compile Include="GetJobDetails.cs" />
     <Compile Include="GetJobsAsyncTest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Mocks\GetBuildDataWithoutArtifacts2.json" />
+    <None Include="Mocks\GetBuildData.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Mocks\GetBuildDataWithoutArtifacts.json" />
     <None Include="Mocks\GetJobData_test_1.json" />
     <None Include="Mocks\GetJobs.json" />
     <None Include="packages.config" />
