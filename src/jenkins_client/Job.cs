@@ -158,7 +158,7 @@ namespace JenkinsClient
         }
         #endregion
 
-        internal Job(Client client, string name)
+        public Job(Client client, string name)
         {
             this.client = client;
             this.name = name;

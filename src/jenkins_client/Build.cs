@@ -114,8 +114,15 @@ namespace JenkinsClient
                 return result;
             }
         }
+        public List<Artifact> artifacts
+        {
+            get
+            {
+                return null;
+            }
+        }
 
-        internal Build(Job job, int number, string url)
+        public Build(Job job, int number, string url)
         {
             this.job = job;
             this.number = number;
@@ -160,5 +167,9 @@ namespace JenkinsClient
         {
             return await WaitForBuildEnd(new Timeout(ct));
         }
+    }
+
+    public class Artifact
+    {
     }
 }
