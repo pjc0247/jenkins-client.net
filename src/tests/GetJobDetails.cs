@@ -16,13 +16,14 @@ namespace tests
         [SetUp]
         public void Setup()
         {
+            var baseDir = AppDomain.CurrentDomain.BaseDirectory;
             var http = HttpMockRepository.At(Config.Host);
 
             http.Stub(x => x.Get("/api/json"))
-                .ReturnFile("./Mocks/GetJobs.json")
+                .ReturnFile(baseDir + @"\Mocks\GetJobs.json")
                 .OK();
             http.Stub(x => x.Get("/job/test_1/api/json"))
-                .ReturnFile("./Mocks/GetJobData_test_1.json")
+                .ReturnFile(baseDir + @"\Mocks\GetJobData_test_1.json")
                 .OK();
 
             client = Client.Create(

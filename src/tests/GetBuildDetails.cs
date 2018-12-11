@@ -16,16 +16,17 @@ namespace tests
         [SetUp]
         public void Setup()
         {
+            var baseDir = AppDomain.CurrentDomain.BaseDirectory;
             var http = HttpMockRepository.At(Config.Host);
             var test = Environment.CurrentDirectory;
             http.Stub(x => x.Get("/job/jobName/368/api/json"))
-                .ReturnFile(@"tests\Mocks\GetBuildData.json")
+                .ReturnFile(baseDir+@"\Mocks\GetBuildData.json")
                 .OK();
             http.Stub(x => x.Get("/job/jobName/369/api/json"))
-                .ReturnFile(@"tests\Mocks\GetBuildDataWithoutArtifacts.json")
+                .ReturnFile(baseDir + @"\Mocks\GetBuildDataWithoutArtifacts.json")
                 .OK();
             http.Stub(x => x.Get("/job/jobName/370/api/json"))
-                .ReturnFile(@"tests\Mocks\GetBuildDataWithoutArtifacts2.json")
+                .ReturnFile(baseDir + @"\Mocks\GetBuildDataWithoutArtifacts2.json")
                 .OK();
 
             _client = Client.Create(
