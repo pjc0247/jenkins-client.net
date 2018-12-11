@@ -1,7 +1,7 @@
 jenkins-client.net
 ====
 
-__Jenkins REST API client for .Net__  written in C#
+__Jenkins REST API client for .Net__
 <br>
 [examples](https://github.com/pjc0247/jenkins-client.net/tree/master/src/examples/Example)
 
@@ -26,11 +26,11 @@ var item = await job.BuildAsync(new Dictionary<string, string>() {
 });
 Console.WriteLine("Build Queued");
 
-/* 요청한 빌드가 jenkins 빌드 큐에서 실제 빌드로 옮겨질 때 까지 대기한다. */
+/* Waits for the actual build starts from the pending queue. */
 await item.WaitForBuildStart();
 Console.WriteLine("Build Started");
 
-/* 요청한 빌드가 완료, 혹은 중지될때까지 대기한다. */
+/* Waits for the build to finish or failure. */
 await item.WaitForBuildEnd();
 Console.WriteLine("Build Finished");
 ```
@@ -38,7 +38,7 @@ Console.WriteLine("Build Finished");
 Releases
 ----
 __[Github Release Page](https://github.com/pjc0247/jenkins-client.net/releases)__<br><br>
-or... You can install 'JenkinsClient' via NuGet now.
+or... You can install 'JenkinsClient' via NuGet.
 ```
 PM> Install-Package JenkinsClient
 ```
