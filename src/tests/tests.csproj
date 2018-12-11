@@ -44,9 +44,8 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HttpMock, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\HttpMock.1.2.0\lib\net40\HttpMock.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="HttpMock, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HttpMock.2.3.0\lib\net45\HttpMock.dll</HintPath>
     </Reference>
     <Reference Include="Kayak, Version=0.7.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Kayak.0.7.2\lib\Kayak.dll</HintPath>
